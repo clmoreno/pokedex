@@ -10,6 +10,13 @@ function setPokemons(data) {
   const pokemons = data.results.map(pokemon => {
     let { url } = pokemon
     pokemon.id = url.substring(34, url.length - 1)
+    let imgId = pokemon.id
+    if (imgId < 10) {
+      imgId = '00' + imgId
+    } else if (imgId < 100) {
+      imgId = '0' + imgId
+    }
+    pokemon.img = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imgId}.png`
 
     return pokemon
   })
